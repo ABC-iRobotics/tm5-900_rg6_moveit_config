@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: tm5-900_rg6_moveit_config
+    relative_path: config/tm5-900.urdf.xacro
+  srdf:
+    relative_path: config/tm5-900.srdf
+  package_settings:
+    author_name: Makány András
+    author_email: andras.makany@irob.uni-obuda.hu
+    generated_timestamp: 1740390359

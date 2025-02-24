@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="tm5-900">
+    <xacro:arg name="initial_positions_file" default="initial_positions.yaml" />
+
+    <!-- Import tm5-900_rg6 urdf file -->
+    <xacro:include filename="$(find tm_description)/xacro/tm5-900.urdf.xacro" />
+    <xacro:include filename="$(find onrobot_rg_description)/urdf/onrobot_rg6_model_macro.xacro" />
+    <xacro:onrobot_rg6 prefix="" effector_base="flange"/>
+
+    <!-- Import control_xacro -->
+    <xacro:include filename="tm5-900.ros2_control.xacro" />
+
+
+    <xacro:tm5-900_ros2_control name="FakeSystem" initial_positions_file="$(arg initial_positions_file)"/>
+
+</robot>
