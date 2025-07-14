@@ -5,6 +5,27 @@ moveit_setup_assistant_config:
   srdf:
     relative_path: config/tm5-900.srdf
   package_settings:
-    author_name: Makány András
+    author_name: András Makány
     author_email: andras.makany@irob.uni-obuda.hu
-    generated_timestamp: 1740390359
+    generated_timestamp: 1749765306
+  control_xacro:
+    command:
+      - position
+      - velocity
+      - effort
+    state:
+      - position
+      - velocity
+      - effort
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+      - velocity
+      - effort
+    state:
+      - position
+      - velocity
+      - effort

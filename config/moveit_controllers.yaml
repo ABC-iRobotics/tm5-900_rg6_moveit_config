@@ -1,16 +1,17 @@
 # MoveIt uses this configuration for controller management
 
 trajectory_execution:
-  allowed_execution_duration_scaling: 1.2
-  allowed_goal_duration_margin: 0.5
-  allowed_start_tolerance: 0.1
-  trajectory_duration_monitoring: false
+  # * Added scaling to compensate for external controller's latency
+  allowed_execution_duration_scaling: 1.5
+  allowed_goal_duration_margin: 2.0
+  allowed_start_tolerance: 3.0
+  trajectory_duration_monitoring: true
 moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
 
 moveit_simple_controller_manager:
   controller_names:
     - tmr_arm_controller
-    - onrobot_controller
+    - rg6_controller
 
   tmr_arm_controller:
     type: FollowJointTrajectory
@@ -23,9 +24,14 @@ moveit_simple_controller_manager:
       - joint_6
     action_ns: follow_joint_trajectory
     default: true
-  onrobot_controller:
+  rg6_controller:
     type: GripperCommand
     joints:
       - finger_joint
+      - left_inner_knuckle_joint
+      - left_inner_finger_joint
+      - right_outer_knuckle_joint
+      - right_inner_knuckle_joint
+      - right_inner_finger_joint
     action_ns: ""
     default: true

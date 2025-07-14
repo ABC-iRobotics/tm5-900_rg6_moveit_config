@@ -210,8 +210,8 @@ def generate_launch_description():
     
     rg6_tcp_node = Node(
         package='onrobot_rg_control',
-        executable='OnRobotRGTcpNode',
-        name='OnRobotRGTcpNode',
+        executable='OnRobotRGTcp',
+        name='OnRobotRGTcp',
         output='screen',
         arguments=[],
         parameters=[{

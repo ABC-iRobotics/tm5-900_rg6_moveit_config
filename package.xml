@@ -4,7 +4,7 @@
   <name>tm5-900_rg6_moveit_config</name>
   <version>0.3.0</version>
   <description>
-     An automatically generated package with all the configuration and launch files for using the tm5-900 and the OnRobot RG6 gripper with the MoveIt Motion Planning Framework
+     An automatically generated package with all the configuration and launch files for using the tm5-900 with the MoveIt Motion Planning Framework
   </description>
   <maintainer email="andras.makany@irob.uni-obuda.hu">Makány András</maintainer>
 
@@ -41,8 +41,8 @@
   <exec_depend>rviz_common</exec_depend>
   <exec_depend>rviz_default_plugins</exec_depend>
   <exec_depend>tf2_ros</exec_depend>
-  <exec_depend>onrobot_rg_control</exec_depend>
   <exec_depend>warehouse_ros_mongo</exec_depend>
+  <exec_depend>xacro</exec_depend>
 
 
   <export>
