@@ -1,16 +1,25 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="tm5-900">
     <xacro:arg name="initial_positions_file" default="initial_positions.yaml" />
+    <xacro:arg name="ros2_control_hardware_type" default="mock_components" />
 
-    <!-- Import tm5-900_rg6 urdf file -->
+    <!-- Import tm5-900 urdf file -->
     <xacro:include filename="$(find tm_description)/xacro/tm5-900.urdf.xacro" />
+
+    <!-- Import RG6 gripper urdf file -->
     <xacro:include filename="$(find onrobot_rg_description)/urdf/onrobot_rg6_model_macro.xacro" />
-    <xacro:onrobot_rg6 prefix="" effector_base="flange"/>
+    <xacro:onrobot_rg6 prefix=""/>
 
     <!-- Import control_xacro -->
     <xacro:include filename="tm5-900.ros2_control.xacro" />
 
 
-    <xacro:tm5-900_ros2_control name="FakeSystem" initial_positions_file="$(arg initial_positions_file)"/>
+    <xacro:tm5-900_ros2_control name="FakeSystem" initial_positions_file="$(arg initial_positions_file)" ros2_control_hardware_type="$(arg ros2_control_hardware_type)"/>
 
+    <joint name="joint_tcp_fixed" type="fixed">
+        <parent link="flange"/>
+        <child link="base_link"/>
+        <origin rpy="0 0 1.57079632679" xyz="0 0.0 0.0"/>
+    </joint>
 </robot>
+
