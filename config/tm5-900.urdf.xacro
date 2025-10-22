@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="tm5-900">
     <xacro:arg name="initial_positions_file" default="initial_positions.yaml" />
-    <xacro:arg name="ros2_control_hardware_type" default="mock_components" />
+    <xacro:arg name="ros2_control_hardware_type" default="isaac" />
 
     <!-- Import tm5-900 urdf file -->
     <xacro:include filename="$(find tm_description)/xacro/tm5-900.urdf.xacro" />
@@ -14,7 +14,7 @@
     <xacro:include filename="tm5-900.ros2_control.xacro" />
 
 
-    <xacro:tm5-900_ros2_control name="FakeSystem" initial_positions_file="$(arg initial_positions_file)" ros2_control_hardware_type="$(arg ros2_control_hardware_type)"/>
+    <xacro:tm5-900_ros2_control name="Topic_based_control" initial_positions_file="$(arg initial_positions_file)" ros2_control_hardware_type="$(arg ros2_control_hardware_type)"/>
 
     <joint name="joint_tcp_fixed" type="fixed">
         <parent link="flange"/>

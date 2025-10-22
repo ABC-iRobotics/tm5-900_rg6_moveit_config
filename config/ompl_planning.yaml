@@ -1,6 +1,7 @@
-planning_plugins:
-   - ompl_interface/OMPLPlanner
- # The order of the elements in the adapter corresponds to the order they are processed by the motion planning pipeline.
+planning_plugins: 
+  - ompl_interface/OMPLPlanner
+# To optionally use Ruckig for jerk-limited smoothing, add this line to the request adapters below
+# default_planning_request_adapters/AddRuckigTrajectorySmoothing
 request_adapters:
   - default_planning_request_adapters/ResolveConstraintFrames
   - default_planning_request_adapters/ValidateWorkspaceBounds
@@ -10,8 +11,15 @@ response_adapters:
   - default_planning_response_adapters/AddTimeOptimalParameterization
   - default_planning_response_adapters/ValidateSolution
   - default_planning_response_adapters/DisplayMotionPath
-start_state_max_bounds_error: 0.1
+start_state_max_bounds_error: 0.01
 planner_configs:
+  APSConfigDefault:
+    type: geometric::AnytimePathShortening
+    shortcut: 1  # Attempt to shortcut all new solution paths
+    hybridize: 1  # Compute hybrid solution trajectories
+    max_hybrid_paths: 36  # Number of hybrid paths generated per iteration
+    num_planners: 8  # The number of default planners to use for planning
+    planners: "RRTConnect,RRTConnect,RRTConnect,RRTConnect,RRTConnect,RRTConnect,RRTConnect,RRTConnect"  # A comma-separated list of planner types (e.g., "PRM,EST,RRTConnect"Optionally, planner parameters can be passed to change the default:"PRM[max_nearest_neighbors=5],EST[goal_bias=.5],RRT[range=10. goal_bias=.1]"
   SBLkConfigDefault:
     type: geometric::SBL
     range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
@@ -137,8 +145,9 @@ planner_configs:
     type: geometric::TrajOpt
 
 tmr_arm:
-  default_planner_config: STRIDEkConfigDefault
+  #default_planner_config: STRIDEkConfigDefault
   planner_configs:
+    - APSConfigDefault
     - SBLkConfigDefault
     - ESTkConfigDefault
     - LBKPIECEkConfigDefault
@@ -163,6 +172,6 @@ tmr_arm:
     - SPARSkConfigDefault
     - SPARStwokConfigDefault
     - TrajOptDefault
-  enforce_constrained_state_space: True
+  #enforce_constrained_state_space: True
   projection_evaluator: joints(joint_1,joint_6)
   longest_valid_segment_fraction: 0.01

@@ -7,25 +7,4 @@ moveit_setup_assistant_config:
   package_settings:
     author_name: András Makány
     author_email: andras.makany@irob.uni-obuda.hu
-    generated_timestamp: 1749765306
-  control_xacro:
-    command:
-      - position
-      - velocity
-      - effort
-    state:
-      - position
-      - velocity
-      - effort
-  modified_urdf:
-    xacros:
-      - control_xacro
-  control_xacro:
-    command:
-      - position
-      - velocity
-      - effort
-    state:
-      - position
-      - velocity
-      - effort
+    generated_timestamp: 1754354606

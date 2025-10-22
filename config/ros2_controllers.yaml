@@ -7,8 +7,8 @@ controller_manager:
       type: joint_trajectory_controller/JointTrajectoryController
 
 
-    rg6_controller:
-      type: position_controller/GripperActionController
+    onrobot_controller:
+      type: position_controllers/GripperActionController
 
 
     joint_state_broadcaster:
@@ -25,13 +25,10 @@ tmr_arm_controller:
       - joint_6
     command_interfaces:
       - position
-      - velocity
-      - effort
     state_interfaces:
       - position
       - velocity
-      - effort
     allow_nonzero_velocity_at_trajectory_end: true
-rg6_controller:
+onrobot_controller:
   ros__parameters:
     joint: finger_joint
