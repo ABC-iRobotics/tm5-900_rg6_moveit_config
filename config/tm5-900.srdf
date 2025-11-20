@@ -119,6 +119,7 @@
     <disable_collisions link1="link_2" link2="link_4" reason="Never"/>
     <disable_collisions link1="link_3" link2="link_4" reason="Adjacent"/>
     <disable_collisions link1="link_4" link2="link_5" reason="Adjacent"/>
+    <disable_collisions link1="link_4" link2="link_6" reason="User"/>
     <disable_collisions link1="link_4" link2="right_inner_finger" reason="Never"/>
     <disable_collisions link1="link_4" link2="right_inner_knuckle" reason="Never"/>
     <disable_collisions link1="link_4" link2="right_outer_knuckle" reason="Never"/>
